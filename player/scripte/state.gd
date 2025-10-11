@@ -14,10 +14,10 @@ func exit():
 	pass
 
 func update(_delta: float):
-	direction = Input.get_axis("move_left", "move_right")
+	direction = Input.get_axis("ui_left", "ui_right")
 
 func physics_update(_delta: float):
-	direction = Input.get_axis("move_left", "move_right")
+	direction = Input.get_axis("ui_left", "ui_right")
 	checkcollision()
 
 func checkcollision():
