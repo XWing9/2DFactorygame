@@ -11,9 +11,7 @@ General:
 
 Game:
 	Fixes:
-		-Fix building UI/holograms
-			very big mouse offset currently and doesnt reall snaps to grid how i want it to
-			maybe bundel assets and scripts together?
+		-building hologram now moves with the player?
 
 	Features:
 		-make hotkey to acces build menu directly
