@@ -19,6 +19,13 @@ func _ready():
 			initial_state.enter()
 			current_state = initial_state
 
+#takes every key input
+func _input(event: InputEvent) -> void:
+	# This captures all keyboard/mouse events globally
+	if event is InputEventKey and event.pressed:
+		current_state.handle_input(event)
+		#print("Global key pressed:", event.keycode)
+
 func _process(delta):
 	if current_state:
 		current_state.update(delta)

@@ -14,9 +14,10 @@ Game:
 		-building hologram now moves with the player?
 
 	Features:
-		-make hotkey to acces build menu directly
 		
 		-game runs over energy
+		
+		-when building display a grid to make it easier
 		
 	World generation:
 		-Fix gameloop so generation happens only once

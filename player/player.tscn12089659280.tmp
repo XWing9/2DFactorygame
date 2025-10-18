@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvybtt5p5uen3"]
+[gd_scene load_steps=6 format=3 uid="uid://dvybtt5p5uen3"]
 
 [ext_resource type="Texture2D" uid="uid://c0f1vw2lqn6nx" path="res://player/playerassets/player-down1sprite.png" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://bnmqcjw4yj8oh" path="res://player/scripte/statemachine.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://fp6hplcxtcp7" path="res://player/scripte/walkstate.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://cndshqaw0h8yo" path="res://player/scripte/idleState.gd" id="4_yw30f"]
-[ext_resource type="Script" uid="uid://ck3ll5ajbnl21" path="res://player/buildstate.gd" id="5_qjkh3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
 radius = 8.0
@@ -30,13 +29,8 @@ zoom = Vector2(2, 2)
 script = ExtResource("1_oul6g")
 initial_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_yw30f")
-player = NodePath("../..")
 
-[node name="Walkstate" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Walkstate" type="Node" parent="StateMachine"]
 script = ExtResource("3_yw30f")
-player = NodePath("../..")
-
-[node name="buildstate" type="Node" parent="StateMachine"]
-script = ExtResource("5_qjkh3")

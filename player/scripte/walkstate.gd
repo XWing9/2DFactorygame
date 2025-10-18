@@ -7,23 +7,29 @@ const SPEED := 130.0
 func enter():
 	pass
 
-func physics_update(delta: float) -> void:
-	super.physics_update(delta)
-
-	var move_dir := Vector2.ZERO
-
-	# Handle input for 4 directions
+func update(_delta):
+	var dir = Vector2.ZERO
 	if Input.is_action_pressed("D"):
-		move_dir.x += 1
+		dir.x += 1
 	if Input.is_action_pressed("A"):
-		move_dir.x -= 1
+		dir.x -= 1
 	if Input.is_action_pressed("S"):
-		move_dir.y += 1
+		dir.y += 1
 	if Input.is_action_pressed("W"):
-		move_dir.y -= 1
+		dir.y -= 1
 
-	if move_dir != Vector2.ZERO:
-		move_dir = move_dir.normalized()
-	
-	player.velocity = move_dir * SPEED
+	if dir != Vector2.ZERO:
+		dir = dir.normalized()
+		player.velocity = dir * currentPlayerSpeed
+	else:
+		# No input → go idle
+		switchState(self,"idlestate")
+
+func physics_update(delta: float) -> void:
 	player.move_and_slide()
+
+func handle_input(event: InputEvent) -> void:
+	pass
+
+func exit():
+	pass

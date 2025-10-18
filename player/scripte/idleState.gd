@@ -1,11 +1,25 @@
-extends Node
+extends State
+class_name IdleState
 
+func enter():
+	#play idle animation
+	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func update(_delta):
+	pass
 
+func physics_update(_delta):
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func handle_input(event: InputEvent) -> void:
+	if event.is_action_pressed("W") \
+	or event.is_action_pressed("S") \
+	or event.is_action_pressed("A") \
+	or event.is_action_pressed("D"):
+		super.switchState(self,"walkstate")
+	elif event.is_action_pressed("Q-EnterBuildGUI"):
+		#super.switchState(self,"buildstate")
+		pass
+
+func exit():
 	pass

@@ -1,11 +1,12 @@
 extends Node
 
 class_name State 
-signal Transitioned
+signal Transitioned(currentstate, newState)
 
-var player: CharacterBody2D
+@export var player: CharacterBody2D
 var animated_sprite: AnimatedSprite2D
 var direction: int = 0
+@export var currentPlayerSpeed = 100
 
 func enter():
 	pass
@@ -14,15 +15,10 @@ func exit():
 	pass
 
 func update(_delta: float):
-	direction = Input.get_axis("ui_left", "ui_right")
+	pass
 
 func physics_update(_delta: float):
-	direction = Input.get_axis("ui_left", "ui_right")
-	checkcollision()
+	pass
 
-func checkcollision():
-	for i in player.get_slide_collision_count():
-		var collision = player.get_slide_collision(i)
-		var collider = collision.get_collider()
-		if collider and collider.is_in_group("Enemys"):
-			emit_signal("Transitioned",self,"playerDamage")
+func switchState(currentstate,newState):
+	Transitioned.emit(currentstate,newState)
