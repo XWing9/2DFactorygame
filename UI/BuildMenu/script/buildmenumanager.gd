@@ -8,6 +8,7 @@ var ghostSprite: Sprite2D
 var overlay: CanvasLayer
 var isPlacing := false
 var buildingManager : Node
+var spriteName : String
 
 func _ready():
 	overlay = CanvasLayer.new()
@@ -48,6 +49,6 @@ func on_build_button_pressed(button: Button):
 		isPlacing = true
 		print("Blueprint started with texture size:", texture.get_size())
 		#adjust the "smelter" to dynamic thing
-		buildingManager.startPlacement("smelter",ghostSprite.texture)
+		buildingManager.startPlacement(button.name,ghostSprite.texture)
 	else:
 		print("ERROR: No icon set on", button.name)

@@ -27,8 +27,10 @@ func _process(_delta):
 		return
 		
 	calcPos()
-	var cam := get_viewport().get_camera_2d()
-	var screen_pos = cam.get_screen_transform() * worldPos
+	#calcs pos of shadow sprite
+	var viewport_transform = tileMapLayer.get_viewport_transform()
+	var screen_pos = viewport_transform * tileMapLayer.to_global(worldPosLocal)
+	
 	buildingGUIManager.ghostSprite.position = screen_pos
 
 
@@ -69,9 +71,9 @@ func calcPos():
 	cellPos = tileMapLayer.local_to_map(tileMapLayer.to_local(mousePos))
 	worldPosLocal = tileMapLayer.map_to_local(Vector2(cellPos))
 
-	# 3. Offset to center the sprite on the tile
+	# 3. get the size of the tiles and get relative local cords pos
 	tileSize = Vector2(tileMapLayer.tile_set.tile_size)
 	worldPosLocal += tileSize / 2
 
-	# 4. Convert to global for CanvasLayer
+	# 4. worldposlocal pos converted to globally thing
 	worldPos = tileMapLayer.to_global(worldPosLocal)

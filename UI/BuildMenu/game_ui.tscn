@@ -43,7 +43,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_kfjql")
 buildMenu = NodePath("buildmenu")
-smelterButton = NodePath("buildmenu/HBoxContainer/smelterButton")
+smelterButton = NodePath("buildmenu/HBoxContainer/smelter")
 minerButton = NodePath("buildmenu/HBoxContainer/Button2")
 
 [node name="buildmenu" type="VBoxContainer" parent="MarginContainer"]
@@ -58,7 +58,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="smelterButton" type="Button" parent="MarginContainer/buildmenu/HBoxContainer"]
+[node name="smelter" type="Button" parent="MarginContainer/buildmenu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_h0rig")

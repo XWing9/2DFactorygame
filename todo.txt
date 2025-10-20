@@ -14,13 +14,23 @@ Game:
 		-building hologram now moves with the player?
 
 	Features:
+		-trains
 		
 		-game runs over energy
 		
 		-when building display a grid to make it easier
 		
+		(big maybe and when only at the end)
+			-different nations and option to wage war
+			-builtunits(only vehicles, infantry will be like 86 drones)
+			-manage resources for units(oil,steel etc)
+			-make peace
+			-make ai smart and dont senslessly rage war(make them want resources and power)
+		
 	World generation:
-		-Fix gameloop so generation happens only once
+		-consider being able to build over several layers upward(tied to trains)
+		
+		-make biomes and map larger
 		
 		-Precdual generation
 			make own art for grounds and define better numbers for cleaner lock
