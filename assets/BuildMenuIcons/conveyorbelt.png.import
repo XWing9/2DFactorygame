@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmdewpulgtveg"
-path="res://.godot/imported/Smelter.png-c39138ffb7f1272c74a7fbc6e14dbeca.ctex"
+uid="uid://de6seobrbcwdg"
+path="res://.godot/imported/conveyorbelt.png-8158aaab197e2fc5cc68cdf6cac281be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BuildMenuIcons/Smelter.png"
-dest_files=["res://.godot/imported/Smelter.png-c39138ffb7f1272c74a7fbc6e14dbeca.ctex"]
+source_file="res://assets/BuildMenuIcons/conveyorbelt.png"
+dest_files=["res://.godot/imported/conveyorbelt.png-8158aaab197e2fc5cc68cdf6cac281be.ctex"]
 
 [params]
 

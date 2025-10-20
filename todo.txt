@@ -1,7 +1,7 @@
 General:
-	-Figure out how i want to sort my stuff:
-		All szenes,scripts assets etc in sep folders.
-		Or bundel all what goes together in a folder.
+	-Sorting as following:
+		allocate every scene,script etc into same respecitve folder,
+		everything for player goes into player, same with terrain, enemys, building etc
 
 	-Make a rough game loop scetch or so
 		satisfactory style with tiers and research?
@@ -11,9 +11,17 @@ General:
 
 Game:
 	Fixes:
-		-building hologram now moves with the player?
+		-make it so tile map takey 32x32pixel sizes, and every ong sprite is treated as a full 32x32 sprite
 
 	Features:
+		-starting gui
+		
+		-generall game saving
+		
+		-inventory
+		
+		-generall machines, like miners belts to establish general game loop
+		
 		-trains
 		
 		-game runs over energy
@@ -28,6 +36,8 @@ Game:
 			-make ai smart and dont senslessly rage war(make them want resources and power)
 		
 	World generation:
+		-consider changing angle a bit(not pure topdown)
+		
 		-consider being able to build over several layers upward(tied to trains)
 		
 		-make biomes and map larger
@@ -46,6 +56,8 @@ Game:
 		-make art for more machines,player etc
 
 	Perforance:
+		-try making a general class/file/script where some global always needed variables are being put into the main calcs to have every time?
+		
 		-Make better rendering
 			so the tiles only get drawn generate when the player is in the area or camere shows them
 			

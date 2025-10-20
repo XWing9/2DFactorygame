@@ -3,6 +3,7 @@ extends MarginContainer
 @export var buildMenu: VBoxContainer
 @export var smelterButton: Button
 @export var minerButton: Button
+@export var conveyorBelt :Button
 
 var ghostSprite: Sprite2D
 var overlay: CanvasLayer
@@ -26,6 +27,7 @@ func _ready():
 	#switch with real signals
 	smelterButton.pressed.connect(func(): on_build_button_pressed(smelterButton))
 	minerButton.pressed.connect(func(): on_build_button_pressed(minerButton))
+	conveyorBelt.pressed.connect(func(): on_build_button_pressed(conveyorBelt))
 
 #does the check with button was pressed
 func _on_togglemenus_pressed(extra_arg_0: bool, extra_arg_1: bool) -> void:

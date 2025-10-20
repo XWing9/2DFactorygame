@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg2t0jaq755n8"]
+[gd_scene load_steps=12 format=3 uid="uid://dg2t0jaq755n8"]
 
 [ext_resource type="Script" uid="uid://dnfo0fw8dginj" path="res://UI/BuildMenu/script/buildmenumanager.gd" id="1_kfjql"]
 [ext_resource type="Texture2D" uid="uid://bwemcrxd2tei7" path="res://assets/Spritesheet_UI_Flat.png" id="1_mp46i"]
-[ext_resource type="Texture2D" uid="uid://3nrexvjeut10" path="res://assets/BuildMenuIcons/Smelter.png" id="3_h0rig"]
+[ext_resource type="Texture2D" uid="uid://bmdewpulgtveg" path="res://assets/BuildMenuIcons/Smelter.png" id="3_h0rig"]
+[ext_resource type="Texture2D" uid="uid://de6seobrbcwdg" path="res://assets/BuildMenuIcons/conveyorbelt.png" id="4_x2k4q"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0rig"]
 texture = ExtResource("1_mp46i")
@@ -32,7 +33,7 @@ events = [SubResource("InputEventKey_i14pj")]
 
 [node name="GameUI" type="CanvasLayer"]
 
-[node name="MarginContainer" type="MarginContainer" parent="." node_paths=PackedStringArray("buildMenu", "smelterButton", "minerButton")]
+[node name="MarginContainer" type="MarginContainer" parent="." node_paths=PackedStringArray("buildMenu", "smelterButton", "minerButton", "conveyorBelt")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,6 +46,7 @@ script = ExtResource("1_kfjql")
 buildMenu = NodePath("buildmenu")
 smelterButton = NodePath("buildmenu/HBoxContainer/smelter")
 minerButton = NodePath("buildmenu/HBoxContainer/Button2")
+conveyorBelt = NodePath("buildmenu/HBoxContainer/conveyorBelt")
 
 [node name="buildmenu" type="VBoxContainer" parent="MarginContainer"]
 visible = false
@@ -75,12 +77,15 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_h0rig")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mp46i")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kfjql")
 
-[node name="Button3" type="Button" parent="MarginContainer/buildmenu/HBoxContainer"]
+[node name="conveyorBelt" type="Button" parent="MarginContainer/buildmenu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_h0rig")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mp46i")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kfjql")
+icon = ExtResource("4_x2k4q")
+icon_alignment = 1
+expand_icon = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/buildmenu"]
 layout_mode = 2
