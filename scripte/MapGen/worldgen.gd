@@ -13,8 +13,8 @@ var startwidth : int = 200
 #id from the tilemap
 var sourceid = 0
 #where on the tile map the wnated tile is
-var waterAtlas = Vector2(1,1)
-var grassAtlas = Vector2(7,1)
+var grassAtlas = Vector2(2,1)
+var dirtatlas = Vector2(7,1)
 
 func _ready() -> void:
 	noise = noise_hieght_Tesxture.noise
@@ -26,6 +26,6 @@ func generateWorld():
 			var noise_val = noise.get_noise_2d(x,y)
 			#if noise is under 0.0 it gets a water tile and vise versa
 			if noise_val >= 0.0:
-				tilemap.set_cell(Vector2(x,y),sourceid,waterAtlas)
+				tilemap.set_cell(Vector2(x,y),sourceid,dirtatlas)
 			elif noise_val < 0.0:
 				tilemap.set_cell(Vector2(x,y),sourceid,grassAtlas)

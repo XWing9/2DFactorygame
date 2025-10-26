@@ -1,0 +1,6 @@
+folder with savegames name
+
+files holding the data from the save
+(player pos)
+-chunks
+-building etc

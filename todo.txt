@@ -1,3 +1,6 @@
+overhaul world gen!!! make it not gen a preset thing and safe the world state or so(but without game saving)
+make a file where stuff gets calculated what the whole project needs(player pos etc)
+
 General:
 	-Sorting as following:
 		allocate every scene,script etc into same respecitve folder,
@@ -18,7 +21,7 @@ Game:
 		
 		-generall game saving
 		
-		-inventory
+		-inventory?
 		
 		-generall machines, like miners belts to establish general game loop
 		
@@ -36,6 +39,8 @@ Game:
 			-make ai smart and dont senslessly rage war(make them want resources and power)
 		
 	World generation:
+		-give every tile more info or so when i check if i can place a building it just gets info and so
+		
 		-consider changing angle a bit(not pure topdown)
 		
 		-consider being able to build over several layers upward(tied to trains)

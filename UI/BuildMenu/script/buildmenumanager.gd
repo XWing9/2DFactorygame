@@ -10,6 +10,7 @@ var overlay: CanvasLayer
 var isPlacing := false
 var buildingManager : Node
 var spriteName : String
+var spriteSize
 
 func _ready():
 	overlay = CanvasLayer.new()
@@ -42,6 +43,7 @@ func toggleVisibility(object):
 
 func on_build_button_pressed(button: Button):
 	var texture = button.icon
+	spriteSize = texture.get_size()
 	if texture:
 		ghostSprite.texture = texture
 		ghostSprite.visible = true
@@ -49,8 +51,7 @@ func on_build_button_pressed(button: Button):
 		ghostSprite.scale = Vector2(2,2)
 		ghostSprite.z_index = 999
 		isPlacing = true
-		print("Blueprint started with texture size:", texture.get_size())
-		#adjust the "smelter" to dynamic thing
+		print("Blueprint started with texture size:", spriteSize)
 		buildingManager.startPlacement(button.name,ghostSprite.texture)
 	else:
 		print("ERROR: No icon set on", button.name)
