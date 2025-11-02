@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdi0j3ir14vl2"]
+[gd_scene load_steps=17 format=3 uid="uid://bdi0j3ir14vl2"]
 
 [ext_resource type="Texture2D" uid="uid://dq3gku18m5j0h" path="res://assets/tiles.png" id="1_u17ww"]
+[ext_resource type="Script" uid="uid://btotwvnme8y18" path="res://scripte/MapGen/chunkGenerator.gd" id="3_a4e6k"]
 [ext_resource type="Texture2D" uid="uid://bmqc18j2m3b65" path="res://assets/assets.png" id="3_k4nfw"]
 [ext_resource type="PackedScene" uid="uid://dvybtt5p5uen3" path="res://player/player.tscn" id="3_tvkfu"]
 [ext_resource type="Script" uid="uid://bjc4wbo3r2oic" path="res://scripte/MapGen/worldgen.gd" id="3_yh775"]
@@ -1562,6 +1563,7 @@ scale = Vector2(1.00012, 0.987826)
 tile_set = SubResource("TileSet_dxykf")
 script = ExtResource("3_yh775")
 noise_hieght_Tesxture = SubResource("NoiseTexture2D_k4nfw")
+chunkGenRef = ExtResource("3_a4e6k")
 
 [node name="assets" type="TileMapLayer" parent="."]
 scale = Vector2(0.999655, 0.989357)
