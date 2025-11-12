@@ -1563,6 +1563,10 @@ tile_set = SubResource("TileSet_dxykf")
 script = ExtResource("3_a4e6k")
 noise_hieght_Tesxture = SubResource("NoiseTexture2D_6hnbx")
 
+[node name="grid" type="Node2D" parent="Grass"]
+scale = Vector2(0.9998801, 1.0123241)
+script = ExtResource("8_a4e6k")
+
 [node name="assets" type="TileMapLayer" parent="."]
 scale = Vector2(0.999655, 0.989357)
 tile_set = SubResource("TileSet_m7ukb")
@@ -1577,7 +1581,3 @@ tileMapLayer = NodePath("../Grass")
 [node name="player" parent="." instance=ExtResource("3_tvkfu")]
 
 [node name="GameUI" parent="." instance=ExtResource("4_u17ww")]
-
-[node name="grid" type="Node2D" parent="."]
-scale = Vector2(1.0000001, 1)
-script = ExtResource("8_a4e6k")

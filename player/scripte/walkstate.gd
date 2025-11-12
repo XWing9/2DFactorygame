@@ -25,10 +25,10 @@ func update(_delta):
 		# No input → go idle
 		switchState(self,"idlestate")
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	player.move_and_slide()
 
-func handle_input(event: InputEvent) -> void:
+func handle_input(_event: InputEvent) -> void:
 	pass
 
 func exit():

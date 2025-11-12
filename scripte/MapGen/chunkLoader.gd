@@ -1,12 +1,14 @@
 extends Node
+class_name chunk_Loader
 
-#get player pos and calc with chunks shouls be loaded and with not
+var LoadedChunks : Dictionary = {
+	"chunks" : []
+}
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _init(player_Pos,player_Radius) -> void:
+	#load chunks 
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func trackLoadedChunks():
+	#get arrays of in mem loaded tiles and ther cords
 	pass

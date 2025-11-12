@@ -1,6 +1,8 @@
 folder with savegames name
 
 files holding the data from the save
-(player pos)
--chunks
--building etc
+save the stuff in extra ressources make sure to overrirde it every time
+-player info, inventroy, pos etc
+-chunk data
+-buildings assets positions
+-building information 

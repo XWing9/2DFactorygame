@@ -73,3 +73,8 @@ Game:
 		
 		-Make game go over ticks?
 		
+
+
+what to do today,
+make rough system that generates tiles in chunks no saving.
+debug menu where the chunk grid gets displayed and its cords

@@ -12,6 +12,8 @@ var buildingManager : Node
 var spriteName : String
 var spriteSize
 
+var displayGrid : draw_Grid
+
 func _ready():
 	overlay = CanvasLayer.new()
 	overlay.layer = 100
@@ -23,6 +25,7 @@ func _ready():
 	overlay.add_child(ghostSprite)
 
 	buildingManager = get_node("/root/Mainszene/Buildings")
+	displayGrid = draw_Grid.new()
 
 	# Connect build buttons
 	#switch with real signals
@@ -55,3 +58,7 @@ func on_build_button_pressed(button: Button):
 		buildingManager.startPlacement(button.name,ghostSprite.texture)
 	else:
 		print("ERROR: No icon set on", button.name)
+
+#fuck this grid drawing
+func _on_togglegrid_pressed() -> void:
+	displayGrid.toggle_grid()
