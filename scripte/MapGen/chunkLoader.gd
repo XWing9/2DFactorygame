@@ -5,7 +5,7 @@ var LoadedChunks : Dictionary = {
 	"chunks" : []
 }
 
-func _init(player_Pos,player_Radius) -> void:
+func _init() -> void:
 	#load chunks 
 	pass
 

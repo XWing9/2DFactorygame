@@ -1,15 +1,18 @@
 extends Node
 class_name chunk_Saver
 
-var filePath
+var savingFilePath = "res://GameSaves"
 var save_File_Folder_Path : String = "res://GameSaves"
 
 #small chunk dic 
 var chunkname : Dictionary = {
+	#ev add chunks cords back as key
 	"chunk_data" : [
-		Vector2.ZERO, 	#tile_cords 
-		0,				#type of tile 
-		true, 			#is tile free to build on
+		[
+			Vector2.ZERO, 	#tile_cords 
+			0,				#type of tile 
+			true, 			#is tile free to build on
+		]
 	]
 }
 var small_Chunk_Buildings : Dictionary = {
@@ -28,10 +31,10 @@ var region_Chunk_Dic : Dictionary = {
 	"cluster_Data" : cluster_Chunk_Dic
 }
 
-func _init(player_Pos,player_Range,loaded_Chunks) -> void:
+func _init() -> void:
 	#save chunk data
 	pass
 
-func saveChunks():
+func saveChunks(arrayOfChunks):
 	pass
 #save chunks into an dictionary and make them into one file
