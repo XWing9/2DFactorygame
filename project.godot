@@ -11,11 +11,17 @@ config_version=5
 [application]
 
 config/name="2d factory game"
-run/main_scene="uid://bdi0j3ir14vl2"
+run/main_scene="uid://y74yoesf5dyf"
 config/features=PackedStringArray("4.5", "Forward Plus")
+
+[autoload]
+
+scene_Switcher="*res://scripte/scene_Switcher.gd"
 
 [display]
 
+window/size/viewport_width=1500
+window/size/viewport_height=800
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

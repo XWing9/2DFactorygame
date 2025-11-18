@@ -9,7 +9,7 @@ var generator : chunk_Generator
 var saver : chunk_Saver
 
 var player_Pos : Vector2
-var player_Radius : int #range of chunks
+@export var player_Radius : int = 4#range of chunks
 var chunks_Loaded : int
 var chunk_Entered : bool
 
@@ -40,15 +40,16 @@ func calc_player_Range():
 	pass
 
 
-#call function per signal
-func load_save_orgeneratechunks():
+func load_save_orgeneratechunks(action):
+	print("entered")
+	status = action
 	#checks if it needs to get saved,loaded or newly generated
-	if (status == "saving"):
+	if (action == "saving"):
 		pass
-	elif (status == "loading"):
+	elif (action == "loading"):
 		pass
-	elif (status == "generatenew"):
+	elif (action == "generatenew"):
 		generator.generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks)
-		saver.saveChunks(arrayOfChunks)
+		#saver.saveChunks(arrayOfChunks)
 	else:
 		print("status is incorrect")

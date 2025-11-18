@@ -25,8 +25,9 @@ var tempChunkData : Dictionary = {
 func _init() -> void:
 	pass
 
-#add chunks into dictionary uppon generation
+
 func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks):
+	#only thing thats of are the chunk cords, sorting into dic with tile pos works
 	var halfchunk = startingchunks / 2
 	
 	var tempdic
@@ -59,7 +60,7 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks):
 						tilemap.set_cell(Vector2(world_x, world_y), sourceid, grassAtlas)
 					tempdic["tilepos"].append(Vector2(world_x,world_y))
 			arrayOfChunks.append(tempdic)
-	print(arrayOfChunks)
+	#print(arrayOfChunks)
 
 #add chunks into dictionary upon generation
 func extendedChunkGen():

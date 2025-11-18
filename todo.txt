@@ -3,18 +3,16 @@ make a file where stuff gets calculated what the whole project needs(player pos 
 
 General:
 	-Sorting as following:
-		allocate every scene,script etc into same respecitve folder,
-		everything for player goes into player, same with terrain, enemys, building etc
+		everything that belongs together like szenes scripts arts etc put in the same folder.
+		everything belonging to player enemys machines etc belongs in one sep folder
 
 	-Make a rough game loop scetch or so
 		satisfactory style with tiers and research?
 		or only research?
-	-(Maybe add gatcha stuff?)
+	(-Maybe add gatcha stuff?)
 		probably only as something not for the game experience
 
 Game:
-	Fixes:
-		-make it so tile map takey 32x32pixel sizes, and every ong sprite is treated as a full 32x32 sprite
 
 	Features:
 		-starting gui
@@ -48,7 +46,7 @@ Game:
 		-make biomes and map larger
 		
 		-Precdual generation
-			make own art for grounds and define better numbers for cleaner lock
+			make own art for grounds and define better tiles for cleaner look
 			make assets generate in clumps, so a bush generates not just one tile of the tile set
 				when generating assets make sure they are placed correctly
 				and not placed on ore nodes etc
@@ -62,9 +60,6 @@ Game:
 
 	Perforance:
 		-try making a general class/file/script where some global always needed variables are being put into the main calcs to have every time?
-		
-		-Make better rendering
-			so the tiles only get drawn generate when the player is in the area or camere shows them
 			
 		-introduce chunks
 			figure out how i can divide my game into chunks
@@ -74,7 +69,7 @@ Game:
 		-Make game go over ticks?
 		
 
-
-what to do today,
-make rough system that generates tiles in chunks no saving.
-debug menu where the chunk grid gets displayed and its cords
+consider making 2 autolouads singeltons,
+one for player stats etc
+one for the chunk manager if neccessary
+one for switching ui scenes

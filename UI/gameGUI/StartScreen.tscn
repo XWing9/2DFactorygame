@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://y74yoesf5dyf"]
+
+[ext_resource type="Texture2D" uid="uid://duyjk4ymy7476" path="res://UI/GUI assets/gamebackground.jpg" id="1_6xrxt"]
+[ext_resource type="Script" uid="uid://ds438g0mktmdn" path="res://UI/gameGUI/start_Screen_Script.gd" id="1_by3du"]
+[ext_resource type="Texture2D" uid="uid://bwemcrxd2tei7" path="res://UI/GUI assets/Spritesheet_UI_Flat.png" id="1_i321t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xrxt"]
+texture = ExtResource("1_i321t")
+region_rect = Rect2(224, 128, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_by3du"]
+texture = ExtResource("1_i321t")
+region_rect = Rect2(224, 192, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xx22g"]
+texture = ExtResource("1_i321t")
+region_rect = Rect2(224, 160, 32, 32)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_by3du")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6xrxt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1500.0
+offset_bottom = 800.0
+size_flags_vertical = 6
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Start Game" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xrxt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_by3du")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xx22g")
+text = "Start Game!"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xrxt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_by3du")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xx22g")
+text = "Settings"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xrxt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_by3du")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xx22g")
+text = "Quit"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
