@@ -4,6 +4,8 @@ class_name szeneSwitcher
 var current_Szene : String
 var world
 var tile_Map_Ground
+var current_Save_Name
+var worldAction : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +27,6 @@ func switchToWorld():
 	
 	tile_Map_Ground = world.get_node("Grass")
 	
-	tile_Map_Ground.load_save_orgeneratechunks("generatenew")
+	tile_Map_Ground.load_save_orgeneratechunks(worldAction)
 	
 	get_tree().disconnect("scene_changed",Callable(self,"switchToWorld"))

@@ -64,7 +64,6 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks):
 
 #add chunks into dictionary upon generation
 func extendedChunkGen():
-	
 	pass
 
 func dupdic() -> Dictionary:

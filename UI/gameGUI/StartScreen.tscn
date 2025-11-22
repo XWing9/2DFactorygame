@@ -41,12 +41,12 @@ offset_bottom = 800.0
 size_flags_vertical = 6
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="StartingGUI" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Start Game" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Start Game" type="Button" parent="HBoxContainer/StartingGUI"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -58,7 +58,7 @@ text = "Start Game!"
 icon_alignment = 1
 expand_icon = true
 
-[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="HBoxContainer/StartingGUI"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -70,7 +70,7 @@ text = "Settings"
 icon_alignment = 1
 expand_icon = true
 
-[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="HBoxContainer/StartingGUI"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -82,4 +82,109 @@ text = "Quit"
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
+[node name="SaveOptions" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="New Game" type="Button" parent="HBoxContainer/SaveOptions"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xrxt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_by3du")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xx22g")
+text = "New Game"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Load Game" type="Button" parent="HBoxContainer/SaveOptions"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xrxt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_by3du")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xx22g")
+text = "Load Save"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Back to startGUI" type="Button" parent="HBoxContainer/SaveOptions"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xrxt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_by3du")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xx22g")
+text = "Back"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings_GUI" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(800, 600)
+anchors_preset = 0
+offset_left = 349.0
+offset_top = 107.0
+offset_right = 1149.0
+offset_bottom = 707.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings_GUI"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings_GUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings_GUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Graphics"
+
+[node name="Button2" type="Button" parent="Settings_GUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Sounds"
+
+[node name="ColorRect" type="ColorRect" parent="Settings_GUI/VBoxContainer"]
+custom_minimum_size = Vector2(800, 550)
+layout_mode = 2
+color = Color(0.37413925, 0.37413928, 0.37413922, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings_GUI/VBoxContainer/ColorRect"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 25
+
+[node name="Container" type="GridContainer" parent="Settings_GUI/VBoxContainer/ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(650, 500)
+layout_mode = 2
+theme_override_constants/h_separation = 300
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="Label" type="Label" parent="Settings_GUI/VBoxContainer/ColorRect/MarginContainer/Container"]
+layout_mode = 2
+text = "text"
+
+[node name="Label2" type="Button" parent="Settings_GUI/VBoxContainer/ColorRect/MarginContainer/Container"]
+layout_mode = 2
+text = "text"
+
+[node name="Label3" type="Label" parent="Settings_GUI/VBoxContainer/ColorRect/MarginContainer/Container"]
+layout_mode = 2
+text = "test"
+
+[connection signal="pressed" from="HBoxContainer/StartingGUI/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="HBoxContainer/StartingGUI/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/StartingGUI/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/SaveOptions/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="HBoxContainer/SaveOptions/Load Game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="HBoxContainer/SaveOptions/Back to startGUI" to="." method="_on_back_to_start_gui_pressed"]

@@ -13,8 +13,6 @@ var player_Pos : Vector2
 var chunks_Loaded : int
 var chunk_Entered : bool
 
-var status : String 
-
 @onready var tilemap = $"."
 @onready var assets = $"../assets"
 var sourceid = 0
@@ -41,13 +39,11 @@ func calc_player_Range():
 
 
 func load_save_orgeneratechunks(action):
-	print("entered")
-	status = action
 	#checks if it needs to get saved,loaded or newly generated
 	if (action == "saving"):
 		pass
 	elif (action == "loading"):
-		pass
+		print("load chunks")
 	elif (action == "generatenew"):
 		generator.generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks)
 		#saver.saveChunks(arrayOfChunks)
