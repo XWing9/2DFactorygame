@@ -575,11 +575,11 @@ terrain_set_1/terrain_0/name = "ORE"
 terrain_set_1/terrain_0/color = Color(0.199414, 0.325374, 0.808064, 1)
 sources/0 = SubResource("TileSetAtlasSource_5ivyi")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a4e6k"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6hnbx"]
 noise_type = 3
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6hnbx"]
-noise = SubResource("FastNoiseLite_a4e6k")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m7ukb"]
+noise = SubResource("FastNoiseLite_6hnbx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6hnbx"]
 texture = ExtResource("3_k4nfw")
@@ -1562,7 +1562,7 @@ noise = SubResource("FastNoiseLite_k4nfw")
 scale = Vector2(1.00012, 0.987826)
 tile_set = SubResource("TileSet_dxykf")
 script = ExtResource("3_a4e6k")
-noise_hieght_Tesxture = SubResource("NoiseTexture2D_6hnbx")
+noise_height_Texture = SubResource("NoiseTexture2D_m7ukb")
 
 [node name="assets" type="TileMapLayer" parent="."]
 scale = Vector2(0.999655, 0.989357)

@@ -15,7 +15,7 @@ General:
 Game:
 
 	Features:
-		-starting gui
+		-stop game when in pausescreen
 		
 		-generall game saving
 		
@@ -69,7 +69,4 @@ Game:
 		-Make game go over ticks?
 		
 
-consider making 2 autolouads singeltons,
-one for player stats etc
-one for the chunk manager if neccessary
-one for switching ui scenes
+consider controlling all input through autoload

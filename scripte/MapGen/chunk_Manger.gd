@@ -1,7 +1,7 @@
 extends TileMapLayer
 class_name chunkManager
 
-@export var noise_hieght_Tesxture : NoiseTexture2D
+@export var noise_height_Texture : NoiseTexture2D
 var noise : Noise
 
 var loader : chunk_Loader
@@ -26,7 +26,7 @@ func _ready() -> void:
 	loader = chunk_Loader.new()
 	generator = chunk_Generator.new()
 	
-	noise = noise_hieght_Tesxture.noise
+	noise = noise_height_Texture.noise
 	
 
 func _process(_delta: float) -> void:
