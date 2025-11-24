@@ -148,6 +148,10 @@ text = "Graphics"
 layout_mode = 2
 text = "Sounds"
 
+[node name="Back_from_Set" type="Button" parent="Settings_GUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
 [node name="ColorRect" type="ColorRect" parent="Settings_GUI/VBoxContainer"]
 custom_minimum_size = Vector2(800, 550)
 layout_mode = 2
@@ -188,3 +192,4 @@ text = "test"
 [connection signal="pressed" from="HBoxContainer/SaveOptions/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="HBoxContainer/SaveOptions/Load Game" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="HBoxContainer/SaveOptions/Back to startGUI" to="." method="_on_back_to_start_gui_pressed"]
+[connection signal="pressed" from="Settings_GUI/VBoxContainer/HBoxContainer/Back_from_Set" to="." method="_on_back_from_set_pressed"]

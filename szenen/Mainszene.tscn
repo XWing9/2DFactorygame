@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdi0j3ir14vl2"]
+[gd_scene load_steps=18 format=3 uid="uid://bdi0j3ir14vl2"]
 
 [ext_resource type="Texture2D" uid="uid://dq3gku18m5j0h" path="res://assets/tiles.png" id="1_u17ww"]
 [ext_resource type="Script" uid="uid://d3i7lvo04kysw" path="res://scripte/MapGen/chunk_Manger.gd" id="3_a4e6k"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dg2t0jaq755n8" path="res://UI/BuildMenu/game_ui.tscn" id="4_u17ww"]
 [ext_resource type="Script" uid="uid://b0vxpimymbqgj" path="res://UI/BuildMenu/script/placementManager.gd" id="5_tvkfu"]
 [ext_resource type="Script" uid="uid://cuqvid5g2m44v" path="res://UI/BuildMenu/script/drawsmth.gd" id="8_a4e6k"]
+[ext_resource type="PackedScene" uid="uid://dbo3abpux525" path="res://UI/gameGUI/pause_screen.tscn" id="9_6hnbx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ivyi"]
 texture = ExtResource("1_u17ww")
@@ -1581,3 +1582,6 @@ tileMapLayer = NodePath("../Grass")
 [node name="grid" type="Node2D" parent="."]
 scale = Vector2(1.0000001, 1)
 script = ExtResource("8_a4e6k")
+
+[node name="Pause_Screen" parent="." instance=ExtResource("9_6hnbx")]
+visible = false

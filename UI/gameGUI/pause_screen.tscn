@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbo3abpux525"]
+
+[ext_resource type="Script" uid="uid://1sldtw0mcmkw" path="res://UI/gameGUI/pause_screen.gd" id="1_3h7vi"]
+
+[node name="Pause_Screen" type="CanvasLayer"]
+script = ExtResource("1_3h7vi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_direction = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Back to Game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="Mainscreen" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Save and Quit"
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/Mainscreen" to="." method="_on_mainscreen_pressed"]

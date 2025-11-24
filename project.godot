@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-scene_Switcher="*res://scripte/scene_Switcher.gd"
+scene_Switcher="*res://scripte/singeltons_Scripts/scene_Switcher.gd"
+Input_Handler="*res://scripte/singeltons_Scripts/Input_Handler.gd"
 
 [display]
 

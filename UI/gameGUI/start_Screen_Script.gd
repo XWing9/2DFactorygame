@@ -3,8 +3,8 @@ class_name StartGUI
 
 @onready var StartingGuiBox = $HBoxContainer/StartingGUI
 @onready var SaveOptions = $HBoxContainer/SaveOptions
-
 @onready var Settings_Grid_GUI = $Settings_GUI
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -36,3 +36,8 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_back_from_set_pressed() -> void:
+	StartingGuiBox.show()
+	Settings_Grid_GUI.hide()
