@@ -10,7 +10,7 @@ var saver : chunk_Saver
 
 var player_Pos : Vector2
 @export var player_Radius : int = 4 #range of chunks
-var chunks_Loaded : int
+
 var chunk_Entered : bool
 
 @onready var tilemap = $"."
@@ -20,6 +20,9 @@ var grassAtlas = Vector2(2,1)
 var dirtatlas = Vector2(7,1)
 
 var arrayOfChunks : Array 
+
+var loadedChunks : Array
+var chunks_Loaded : int
 
 func _ready() -> void:
 	saver = chunk_Saver.new()
