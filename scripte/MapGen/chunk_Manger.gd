@@ -9,7 +9,7 @@ var generator : chunk_Generator
 var saver : chunk_Saver
 
 var player_Pos : Vector2
-@export var player_Radius : int = 4#range of chunks
+@export var player_Radius : int = 4 #range of chunks
 var chunks_Loaded : int
 var chunk_Entered : bool
 
