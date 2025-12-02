@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 scene_Switcher="*res://scripte/singeltons_Scripts/scene_Switcher.gd"
 Input_Handler="*res://scripte/singeltons_Scripts/Input_Handler.gd"
+chunk_Data="*res://scripte/singeltons_Scripts/chunk_data.gd"
 
 [display]
 

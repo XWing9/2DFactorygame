@@ -26,10 +26,11 @@ func _init() -> void:
 	pass
 
 
-func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks):
+func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 	#only thing thats of are the chunk cords, sorting into dic with tile pos works
 	var halfchunk = startingchunks / 2
 	
+	var dic_Key
 	var tempdic
 	var chunk_origin_x
 	var chunk_origin_y
@@ -41,7 +42,7 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks):
 		for chunk_y in range(-halfchunk, halfchunk):
 			# chunk origin in world coordinates
 			tempdic = dupdic()
-			tempdic["chunkcords"] = Vector2(chunk_x,chunk_y)
+			#tempdic["chunkcords"] = Vector2(chunk_x,chunk_y)
 			
 			chunk_origin_x = chunk_x * chunk_Size
 			chunk_origin_y = chunk_y * chunk_Size
@@ -59,12 +60,15 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid,arrayOfChunks):
 					else:
 						tilemap.set_cell(Vector2(world_x, world_y), sourceid, grassAtlas)
 					tempdic["tilepos"].append(Vector2(world_x,world_y))
-			arrayOfChunks.append(tempdic)
+			
+			dic_Key = Vector2(chunk_x,chunk_y)
+			chunk_Data.Loaded_Chunks[dic_Key] = tempdic
 	#print(arrayOfChunks)
+	#print(chunk_Data.Loaded_Chunks)
 
 #add chunks into dictionary upon generation
 func extendedChunkGen():
 	pass
 
 func dupdic() -> Dictionary:
-	return {"chunkCords" : Vector2.ZERO,"tilepos": []}.duplicate(true)
+	return {"tilepos": []}.duplicate(true)
