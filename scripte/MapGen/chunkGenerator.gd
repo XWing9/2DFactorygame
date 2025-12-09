@@ -5,7 +5,7 @@ class_name chunk_Generator
 #generate chunks
 
 #temp let chunk borders get drawn for testing
-var startingchunks : int = 2
+var startingchunks : int = 3
 var chunk_Size : int = 32
 var tempChunkPos : Vector2
 var startheight : int = 200
@@ -16,8 +16,8 @@ var Render_Range : int = 4 #measured in chunks
 
 #dictionary template for temporary saving chunks
 var tempChunkData : Dictionary = {
-	"chunkCords" : Vector2.ZERO,
-	"tilePos": []
+	"chunkcords" : Vector2.ZERO,
+	"tilepos": []
 }
 
 

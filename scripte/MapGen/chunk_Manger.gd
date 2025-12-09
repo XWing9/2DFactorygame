@@ -42,7 +42,7 @@ func calc_player_Range():
 		floor(player_Tile_Pos.y / chunk_Data.chunk_Size)
 	)
 	
-	#print(chunk_Data.current_Chunk,player_Tile_Pos)
+	print(chunk_Data.current_Chunk,player_Tile_Pos)
 	
 	#chunks that should be loaded: 
 	#(-1.0, -1.0) , (0.0, -1.0) ,(0.0, -1.0) ,(1.0, -1.0)
