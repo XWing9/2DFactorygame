@@ -37,21 +37,19 @@ func calc_player_Range():
 	#check if new chunks need to be loaded
 	#damm accurate calc to find out in with chunk im in
 	var player_Tile_Pos = tilemap.local_to_map(player.global_position)
-	chunk_Data.current_Chunk = Vector2(
-		floor(player_Tile_Pos.x / chunk_Data.chunk_Size),
-		floor(player_Tile_Pos.y / chunk_Data.chunk_Size)
-	)
+	if (player_Tile_Pos.x > 0):
+		chunk_Data.current_Chunk = Vector2(
+			floor((player_Tile_Pos.x +15) / chunk_Data.chunk_Size),
+			floor((player_Tile_Pos.y +15) / chunk_Data.chunk_Size)
+		)
+	elif (player_Tile_Pos.x < 0):
+		chunk_Data.current_Chunk = Vector2(
+			floor((player_Tile_Pos.x -15) / chunk_Data.chunk_Size),
+			floor((player_Tile_Pos.y -15) / chunk_Data.chunk_Size)
+		)
 	
 	print(chunk_Data.current_Chunk,player_Tile_Pos)
 	
-	#chunks that should be loaded: 
-	#(-1.0, -1.0) , (0.0, -1.0) ,(0.0, -1.0) ,(1.0, -1.0)
-	#(-1.0, 0.0) , (0.0, 0.0) ,(0.0, 0.0) ,(1.0, 0.0)
-	#(-1.0, 0.0) , (0.0, 0.0) ,(0.0, 0.0) ,(1.0, 0.0)
-	#(-1.0, 1.0) , (0.0, 1.0) ,(0.0, 1.0) ,(1.0, 1.0)
-	
-	#what it should look like
-	#plus one chunk line
 	#(-1.0, -1.0) , (0.0, -1.0),(1.0, -1.0)
 	#(-1.0, 0.0) , (0.0, 0.0) ,(1.0, 0.0)
 	#(-1.0, 1.0) , (0.0, 1.0) ,(1.0, 1.0)

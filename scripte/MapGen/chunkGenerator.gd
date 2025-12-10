@@ -28,7 +28,6 @@ func _init() -> void:
 
 func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 	#only thing thats of are the chunk cords, sorting into dic with tile pos works
-	var halfchunk = startingchunks / 2
 	
 	var dic_Key
 	var tempdic
@@ -38,15 +37,14 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 	var world_y
 	var noise_val
 
-	for chunk_x in range(-halfchunk, halfchunk):
-		for chunk_y in range(-halfchunk, halfchunk):
+	for chunk_x in range(startingchunks):
+		for chunk_y in range(startingchunks):
 			# chunk origin in world coordinates
 			tempdic = dupdic()
-			#tempdic["chunkcords"] = Vector2(chunk_x,chunk_y)
 			
-			chunk_origin_x = chunk_x * chunk_Size
-			chunk_origin_y = chunk_y * chunk_Size
-			
+			chunk_origin_x = (chunk_x - 1.5) * chunk_Size 
+			chunk_origin_y = (chunk_y - 1.5) * chunk_Size
+			print(chunk_origin_x,chunk_origin_y)
 			for x in range(chunk_Size):
 				for y in range(chunk_Size):
 					world_x = chunk_origin_x + x
@@ -55,10 +53,10 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 					noise_val = noise.get_noise_2d(world_x, world_y)
 
 					if noise_val >= 0.0:
-						tilemap.set_cell(Vector2(world_x, world_y), sourceid, dirtatlas)
+						tilemap.set_cell(Vector2i(world_x, world_y), sourceid, dirtatlas)
 						
 					else:
-						tilemap.set_cell(Vector2(world_x, world_y), sourceid, grassAtlas)
+						tilemap.set_cell(Vector2i(world_x, world_y), sourceid, grassAtlas)
 					tempdic["tilepos"].append(Vector2(world_x,world_y))
 			
 			dic_Key = Vector2(chunk_x,chunk_y)
