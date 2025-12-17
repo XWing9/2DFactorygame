@@ -36,36 +36,16 @@ func _process(_delta: float) -> void:
 func calc_player_Range():
 	#check if new chunks need to be loaded
 	#damm accurate calc to find out in with chunk im in
+	#keep in mind y is a bit of since the center of the sprite gets taken not the bottom
 	var player_Tile_Pos = tilemap.local_to_map(player.global_position)
-	if (player_Tile_Pos.x > 0):
-		chunk_Data.current_Chunk = Vector2(
-			floor((player_Tile_Pos.x +15) / chunk_Data.chunk_Size),
-			floor((player_Tile_Pos.y +15) / chunk_Data.chunk_Size)
-		)
-	elif (player_Tile_Pos.x < 0):
-		chunk_Data.current_Chunk = Vector2(
-			floor((player_Tile_Pos.x -15) / chunk_Data.chunk_Size),
-			floor((player_Tile_Pos.y -15) / chunk_Data.chunk_Size)
-		)
+	chunk_Data.current_Chunk = Vector2i(
+		round(float(player_Tile_Pos.x) / chunk_Data.chunk_Size),
+		round(float(player_Tile_Pos.y) / chunk_Data.chunk_Size)
+	)
 	
 	print(chunk_Data.current_Chunk,player_Tile_Pos)
 	
-	#(-1.0, -1.0) , (0.0, -1.0),(1.0, -1.0)
-	#(-1.0, 0.0) , (0.0, 0.0) ,(1.0, 0.0)
-	#(-1.0, 1.0) , (0.0, 1.0) ,(1.0, 1.0)
-	var chunks : Array[Vector2]
-	
-	for x in range (chunk_Data.current_Chunk.x - player_Radius, chunk_Data.current_Chunk.x + player_Radius):
-		for y in range (chunk_Data.current_Chunk.y - player_Radius, chunk_Data.current_Chunk.y + player_Radius):
-			chunks.append(Vector2(x,y))
-	#print(chunks)
-	
-	#check if chunks in chunks are loaded through loader chunks dic
-	var tempchunk
-	for key in chunk_Data.Loaded_Chunks.keys():
-		if key in chunks:
-			pass
-			#print("chunk should be loaded : ", key)
+
 
 func load_save_orgeneratechunks(action):
 	#checks if it needs to get saved,loaded or newly generated

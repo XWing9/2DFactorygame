@@ -1559,13 +1559,11 @@ noise = SubResource("FastNoiseLite_k4nfw")
 [node name="Mainszene" type="Node2D"]
 
 [node name="Grass" type="TileMapLayer" parent="."]
-scale = Vector2(1.00012, 0.987826)
 tile_set = SubResource("TileSet_dxykf")
 script = ExtResource("3_a4e6k")
 noise_height_Texture = SubResource("NoiseTexture2D_m7ukb")
 
 [node name="assets" type="TileMapLayer" parent="."]
-scale = Vector2(0.999655, 0.989357)
 tile_set = SubResource("TileSet_m7ukb")
 script = ExtResource("4_a4e6k")
 noise_hieght_Tesxture = SubResource("NoiseTexture2D_a4e6k")
