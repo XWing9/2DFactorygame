@@ -29,11 +29,10 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
-	calc_player_Range()
-	#print(loader.trackLoadedChunks())
-	#checks player pos and radius and depending calls functions
+	calc_Player_Pos()
+	calc_Player_Range()
 
-func calc_player_Range():
+func calc_Player_Pos():
 	#check if new chunks need to be loaded
 	#damm accurate calc to find out in with chunk im in
 	#keep in mind y is a bit of since the center of the sprite gets taken not the bottom
@@ -42,10 +41,10 @@ func calc_player_Range():
 		round(float(player_Tile_Pos.x) / chunk_Data.chunk_Size),
 		round(float(player_Tile_Pos.y) / chunk_Data.chunk_Size)
 	)
-	
-	print(chunk_Data.current_Chunk,player_Tile_Pos)
-	
+	#print(chunk_Data.current_Chunk,player_Tile_Pos)
 
+func calc_Player_Range():
+	print(chunk_Data.current_Chunk)
 
 func load_save_orgeneratechunks(action):
 	#checks if it needs to get saved,loaded or newly generated

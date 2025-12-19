@@ -11,7 +11,6 @@ var tempChunkPos : Vector2
 var startheight : int = 200
 var startwidth : int = 200
 
-
 var Render_Range : int = 4 #measured in chunks
 
 #dictionary template for temporary saving chunks
