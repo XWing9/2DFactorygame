@@ -70,3 +70,10 @@ Game:
 		
 
 consider controlling all input through autoload
+
+todo:
+	continuesly procedual generation
+	adding the option for seeds when starting new game + names for saves etc
+	loading and saving of chunks/ worlds etc
+	add ore generation/ biomes
+	make correct asset generation with boundary boxes

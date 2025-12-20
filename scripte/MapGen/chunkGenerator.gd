@@ -15,7 +15,6 @@ var Render_Range : int = 4 #measured in chunks
 
 #dictionary template for temporary saving chunks
 var tempChunkData : Dictionary = {
-	"chunkcords" : Vector2.ZERO,
 	"tilepos": []
 }
 
@@ -35,6 +34,8 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 	var world_x
 	var world_y
 	var noise_val
+	var chunk_Cords_X
+	var chunk_Cords_Y
 
 	for chunk_x in range(startingchunks):
 		for chunk_y in range(startingchunks):
@@ -43,6 +44,8 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 			
 			chunk_origin_x = (chunk_x - 1.5) * chunk_Size 
 			chunk_origin_y = (chunk_y - 1.5) * chunk_Size
+			chunk_Cords_X = chunk_x - (startingchunks >> 1)
+			chunk_Cords_Y = chunk_y - (startingchunks >> 1)
 			print(chunk_origin_x,chunk_origin_y)
 			for x in range(chunk_Size):
 				for y in range(chunk_Size):
@@ -58,7 +61,7 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 						tilemap.set_cell(Vector2i(world_x, world_y), sourceid, grassAtlas)
 					tempdic["tilepos"].append(Vector2(world_x,world_y))
 			
-			dic_Key = Vector2(chunk_x,chunk_y)
+			dic_Key = Vector2(chunk_Cords_X,chunk_Cords_Y)
 			chunk_Data.Loaded_Chunks[dic_Key] = tempdic
 	#print(arrayOfChunks)
 	#print(chunk_Data.Loaded_Chunks)
