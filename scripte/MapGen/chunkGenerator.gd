@@ -1,39 +1,34 @@
 extends TileMapLayer
 class_name chunk_Generator
 
-#take nec info from tile map when called
-#generate chunks
-
-#temp let chunk borders get drawn for testing
 var startingchunks : int = 3
 var chunk_Size : int = 32
-var tempChunkPos : Vector2
-var startheight : int = 200
-var startwidth : int = 200
 
-var Render_Range : int = 4 #measured in chunks
+var tempdic
+var noise_val
+var offset : int = int(-0.5 * chunk_Size)
 
 #dictionary template for temporary saving chunks
 var tempChunkData : Dictionary = {
 	"tilepos": []
 }
 
-
 # Called when the node enters the scene tree for the first time.
-func _init() -> void:
-	pass
-
+func _init(noise, tilemap, grassAtlas, dirtAtlas, sourceid):
+	noise = noise
+	tilemap = tilemap
+	grassAtlas = grassAtlas
+	dirtAtlas = dirtAtlas
+	sourceid = sourceid
 
 func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 	#only thing thats of are the chunk cords, sorting into dic with tile pos works
 	
 	var dic_Key
-	var tempdic
 	var chunk_origin_x
 	var chunk_origin_y
 	var world_x
 	var world_y
-	var noise_val
 	var chunk_Cords_X
 	var chunk_Cords_Y
 
@@ -67,8 +62,33 @@ func generateChunks(noise,tilemap,grassAtlas,dirtatlas,sourceid):
 	#print(chunk_Data.Loaded_Chunks)
 
 #add chunks into dictionary upon generation
-func extendedChunkGen():
-	pass
+func extendedChunkGen(toGenChunks, noise,tilemap,grassAtlas,dirtatlas,sourceid):
+	#make more clean and efizient
+	var tmpVector : Vector2
+	var startingY : int
+	var startingX : int
+	var chunkX : int
+	var chunkY : int
+	
+	for chunks in range (toGenChunks.size()):
+		tempdic = dupdic()
+		tmpVector = toGenChunks[chunks]
+		startingX = chunk_Size * int(tmpVector.x)
+		startingY = chunk_Size * int(tmpVector.y)
+		for chunk_X in range(chunk_Size):
+			for chunk_Y in range(chunk_Size):
+				chunkX = startingX + chunk_X + offset
+				chunkY = startingY + chunk_Y + offset
+				noise_val = noise.get_noise_2d(chunkX, chunkY)
+				
+				if noise_val >= 0.0:
+					tilemap.set_cell(Vector2i(chunkX, chunkY), sourceid, dirtatlas)
+						
+				else:
+					tilemap.set_cell(Vector2i(chunkX, chunkY), sourceid, grassAtlas)
 
 func dupdic() -> Dictionary:
 	return {"tilepos": []}.duplicate(true)
+
+#make a rulebook for what tile is for what noise
+#make a constructor to have a generic thing for noise etc

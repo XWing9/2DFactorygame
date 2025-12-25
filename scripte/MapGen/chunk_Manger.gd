@@ -8,7 +8,7 @@ var loader : chunk_Loader
 var generator : chunk_Generator
 var saver : chunk_Saver
 
-@export var player_Radius : int = 2 #range of chunks
+@export var player_Radius : int = 1 #range of chunks
 
 var chunk_Entered : bool
 
@@ -20,31 +20,55 @@ var sourceid = 0
 var grassAtlas = Vector2(2,1)
 var dirtatlas = Vector2(7,1)
 
+#calc_Player_Pos vars
+var player_Tile_Pos : Vector2
+
+#calc_Player_Range
+var toLoadChunks : Array = []
+var tmpPlayerPos : Vector2
+var tmpVal1 : Vector2
+var tmpVal2 : Vector2
+
 func _ready() -> void:
 	saver = chunk_Saver.new()
 	loader = chunk_Loader.new()
-	generator = chunk_Generator.new()
+	generator = chunk_Generator.new(noise,tilemap,grassAtlas,dirtatlas,sourceid)
 	
 	noise = noise_height_Texture.noise
-	
 
 func _process(_delta: float) -> void:
 	calc_Player_Pos()
 	calc_Player_Range()
+	#print(chunk_Data.Loaded_Chunks.keys())
 
 func calc_Player_Pos():
-	#check if new chunks need to be loaded
 	#damm accurate calc to find out in with chunk im in
 	#keep in mind y is a bit of since the center of the sprite gets taken not the bottom
-	var player_Tile_Pos = tilemap.local_to_map(player.global_position)
+	player_Tile_Pos = tilemap.local_to_map(player.global_position)
 	chunk_Data.current_Chunk = Vector2i(
 		round(float(player_Tile_Pos.x) / chunk_Data.chunk_Size),
 		round(float(player_Tile_Pos.y) / chunk_Data.chunk_Size)
 	)
-	#print(chunk_Data.current_Chunk,player_Tile_Pos)
+	#if theres a change in current chunk call calc player range to check if new chunks need to be loaded
+	print(chunk_Data.current_Chunk,player_Tile_Pos)
 
 func calc_Player_Range():
-	print(chunk_Data.current_Chunk)
+	toLoadChunks = []
+	tmpPlayerPos = Vector2(chunk_Data.current_Chunk)
+	for x in range(-1,2):
+		for y in range(-1,2):
+			toLoadChunks.append(tmpPlayerPos + Vector2(x, y))
+	
+	#removes any chunks that are alreay loaded
+	for chunk in chunk_Data.Loaded_Chunks:
+		if toLoadChunks.has(chunk):
+			toLoadChunks.erase(chunk)
+	
+	generator.extendedChunkGen(toLoadChunks,noise,tilemap,grassAtlas,dirtatlas,sourceid)
+	print(toLoadChunks)
+	print(chunk_Data.Loaded_Chunks.keys())
+	#only sends the left overs that actually needs to be loaded/gen checks if they
+	#already exist when not gen when yes load
 
 func load_save_orgeneratechunks(action):
 	#checks if it needs to get saved,loaded or newly generated
