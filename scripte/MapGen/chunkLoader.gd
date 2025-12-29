@@ -15,3 +15,6 @@ func trackLoadedChunks():
 	chunk_Data.chunks_loaded = chunk_Data.Loaded_Chunks.size()
 	#depending on performance yeet return out
 	return chunk_Data.chunks_loaded
+
+func unloadChunks():
+	pass
