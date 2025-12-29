@@ -49,4 +49,4 @@ func on_child_transition(state, new_state_name):
 	
 	current_state = new_state
 	
-	print("State: ", current_state.name)
+	#print("State: ", current_state.name)

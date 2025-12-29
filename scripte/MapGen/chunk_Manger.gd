@@ -17,18 +17,17 @@ var chunk_Entered : bool
 @onready var player = $"../player"
 
 var sourceid = 0
-var grassAtlas = Vector2(2,1)
-var dirtatlas = Vector2(7,1)
+var grassAtlas = Vector2i(2,1)
+var dirtatlas = Vector2i(7,1)
 
-#calc_Player_Pos vars
+#calc_Player_Pos
 var player_Tile_Pos : Vector2
+var last_Player_Pos : Vector2i = Vector2i(0,0)
 
 #calc_Player_Range
 var toLoadChunks : Array = []
 var toUnloadChunks : Array = []
-var tmpPlayerPos : Vector2
-var tmpVal1 : Vector2
-var tmpVal2 : Vector2
+var tmpPlayerPos : Vector2i
 
 func _ready() -> void:
 	saver = chunk_Saver.new()
@@ -39,7 +38,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	calc_Player_Pos()
-	calc_Player_Range()
 	#print(chunk_Data.Loaded_Chunks.keys())
 
 func calc_Player_Pos():
@@ -50,36 +48,39 @@ func calc_Player_Pos():
 		round(float(player_Tile_Pos.x) / chunk_Data.chunk_Size),
 		round(float(player_Tile_Pos.y) / chunk_Data.chunk_Size)
 	)
+	
+	if last_Player_Pos != chunk_Data.current_Chunk:
+		calc_Player_Range()
+		last_Player_Pos = chunk_Data.current_Chunk
 	#if theres a change in current chunk call calc player range to check if new chunks need to be loaded
 	#print(chunk_Data.current_Chunk,player_Tile_Pos)
 
 func calc_Player_Range():
 	toUnloadChunks = []
 	toLoadChunks = []
-	tmpPlayerPos = Vector2(chunk_Data.current_Chunk)
+	tmpPlayerPos = Vector2i(chunk_Data.current_Chunk)
 	for x in range(-1,2):
 		for y in range(-1,2):
-			toLoadChunks.append(tmpPlayerPos + Vector2(x, y))
+			toLoadChunks.append(tmpPlayerPos + Vector2i(x, y))
 	
 	toUnloadChunks = toLoadChunks.duplicate()
-
+	
 	#removes any chunks that are alreay loaded
-	for chunk in chunk_Data.Loaded_Chunks:
+	for chunk in chunk_Data.Loaded_Chunks.keys():
 		if toLoadChunks.has(chunk):
 			toLoadChunks.erase(chunk)
 	
-	print("old chunks:" , chunk_Data.Loaded_Chunks.keys())
 	#build in a checker if new chunks need to be generated
 	generator.extendedChunkGen(toLoadChunks,noise,tilemap)
 	await generator.extended_ChunkGen_Finished
 	
-	print("new chunks:" , chunk_Data.Loaded_Chunks.keys())
-	for chunk in chunk_Data.Loaded_Chunks:
-		if toUnloadChunks.has(chunk):
-			toUnloadChunks.erase(chunk)
-	#print(toUnloadChunks)
-	#print(toLoadChunks)
-	#print(chunk_Data.Loaded_Chunks.keys())
+	#filters all keys that are in the dictionary but not in the array and replacem them with it
+	toUnloadChunks = chunk_Data.Loaded_Chunks.keys().filter(
+		func(key):
+			return not toUnloadChunks.has(key)
+	)
+	#print("to unload chunks:",toUnloadChunks)
+	#print("loaded chunks:",chunk_Data.Loaded_Chunks.keys())
 
 func load_save_orgeneratechunks(action):
 	#checks if it needs to get saved,loaded or newly generated

@@ -16,11 +16,11 @@ var chunk_origin_y
 #vars for continuesly gen
 signal extended_ChunkGen_Finished
 var offset : int = int(-0.5 * chunk_Size)
-var dic_Key : Vector2
+var dic_Key : Vector2i
 var dirtCords : Array[Vector2i] = []
 var grassCords : Array[Vector2i] = []
 var tmp_Tile_Pos : Vector2i = Vector2i.ZERO
-var tmpVectorCords : Vector2
+var tmpVectorCords : Vector2i
 var startingY : int
 var startingX : int
 var tileXPos : int
@@ -31,8 +31,8 @@ var tempChunkData : Dictionary = {
 	"tilepos": []
 }
 
-var grassAtlas : Vector2
-var dirtAtlas : Vector2
+var grassAtlas : Vector2i
+var dirtAtlas : Vector2i
 var sourceId : int
 
 # Called when the node enters the scene tree for the first time.
@@ -60,9 +60,9 @@ func generateChunks(noise,tilemap):
 						tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, dirtAtlas)
 					else:
 						tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, grassAtlas)
-					tempdic["tilepos"].append(Vector2(tileXPos,tileYPos))
+					tempdic["tilepos"].append(Vector2i(tileXPos,tileYPos))
 			
-			dic_Key = Vector2(chunk_Cords_X,chunk_Cords_Y)
+			dic_Key = Vector2i(chunk_Cords_X,chunk_Cords_Y)
 			chunk_Data.Loaded_Chunks[dic_Key] = tempdic
 	#print(arrayOfChunks)
 	#print(chunk_Data.Loaded_Chunks)
@@ -87,14 +87,17 @@ func extendedChunkGen(toGenChunks, noise,tilemap):
 					dirtCords.append(tmp_Tile_Pos)
 				else:
 					grassCords.append(tmp_Tile_Pos)
-				tempdic["tilepos"].append(Vector2(tileXPos,tileYPos))
+				tempdic["tilepos"].append(Vector2i(tileXPos,tileYPos))
 		#batch set tiles
 		for pos in dirtCords:
 			tilemap.set_cell(pos, sourceId, dirtAtlas)
 		for pos in grassCords:
 			tilemap.set_cell(pos, sourceId, grassAtlas)
-		dic_Key = Vector2(tmpVectorCords.x,tmpVectorCords.y)
+		dic_Key = Vector2i(tmpVectorCords.x,tmpVectorCords.y)
 		chunk_Data.Loaded_Chunks[dic_Key] = tempdic
+	call_deferred("emit_Finished_Signal")
+
+func emit_Finished_Signal():
 	extended_ChunkGen_Finished.emit()
 
 func dupdic() -> Dictionary:
