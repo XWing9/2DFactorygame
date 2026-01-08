@@ -49,10 +49,10 @@ func calc_Player_Pos():
 		round(float(player_Tile_Pos.y) / chunk_Data.chunk_Size)
 	)
 	
+	#checks if new chunks need to be loaded
 	if last_Player_Pos != chunk_Data.current_Chunk:
 		calc_Player_Range()
 		last_Player_Pos = chunk_Data.current_Chunk
-	#if theres a change in current chunk call calc player range to check if new chunks need to be loaded
 	#print(chunk_Data.current_Chunk,player_Tile_Pos)
 
 func calc_Player_Range():
@@ -70,15 +70,22 @@ func calc_Player_Range():
 		if toLoadChunks.has(chunk):
 			toLoadChunks.erase(chunk)
 	
-	#build in a checker if new chunks need to be generated
-	generator.extendedChunkGen(toLoadChunks,noise,tilemap)
-	await generator.extended_ChunkGen_Finished
+	#checks if chunks need to be loaded or gnerated
+	if loader.check_If_Chunk_is_Saved():
+		loader.load_newChunks()
+		#also use await maybe
+	else:
+		generator.extendedChunkGen(toLoadChunks,noise,tilemap)
+		await generator.extended_ChunkGen_Finished
 	
 	#filters all keys that are in the dictionary but not in the array and replacem them with it
 	toUnloadChunks = chunk_Data.Loaded_Chunks.keys().filter(
 		func(key):
 			return not toUnloadChunks.has(key)
 	)
+	
+	if toUnloadChunks.size() != 0:
+		loader.unload_Chunks(toUnloadChunks)
 	#print("to unload chunks:",toUnloadChunks)
 	#print("loaded chunks:",chunk_Data.Loaded_Chunks.keys())
 

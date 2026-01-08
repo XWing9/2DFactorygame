@@ -6,15 +6,17 @@ func _init() -> void:
 	pass
 
 func load_newChunks():
+	#use signal to say func is finished
 	pass
 
-func unload_Chunks():
+func unload_Chunks(toUnloadChunks):
+	#make loop that checks if chunks need to be saved
+	#when yes save when not dont save
+	#use goddots erase.cell() function for it
 	pass
 
-func trackLoadedChunks():
-	chunk_Data.chunks_loaded = chunk_Data.Loaded_Chunks.size()
-	#depending on performance yeet return out
-	return chunk_Data.chunks_loaded
+func check_If_Chunk_is_Saved() -> bool:
+	return false
 
-func unloadChunks():
+func save_Chunk_To_Disc():
 	pass
