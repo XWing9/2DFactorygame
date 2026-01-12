@@ -85,7 +85,7 @@ func calc_Player_Range():
 	)
 	
 	if toUnloadChunks.size() != 0:
-		loader.unload_Chunks(toUnloadChunks)
+		loader.unload_Chunks(toUnloadChunks,tilemap)
 	#print("to unload chunks:",toUnloadChunks)
 	#print("loaded chunks:",chunk_Data.Loaded_Chunks.keys())
 
