@@ -35,6 +35,7 @@ func _init() -> void:
 	#save chunk data
 	pass
 
-func saveChunks(_arrayOfChunks):
+func saveChunks(chunksToSave):
+	#build stuff to save chunks into dics then into ressource files
 	pass
 #save chunks into an dictionary and make them into one file

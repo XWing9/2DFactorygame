@@ -56,8 +56,8 @@ func calc_Player_Pos():
 	#print(chunk_Data.current_Chunk,player_Tile_Pos)
 
 func calc_Player_Range():
-	toUnloadChunks = []
-	toLoadChunks = []
+	toUnloadChunks.clear()
+	toLoadChunks.clear()
 	tmpPlayerPos = Vector2i(chunk_Data.current_Chunk)
 	for x in range(-1,2):
 		for y in range(-1,2):
@@ -76,18 +76,18 @@ func calc_Player_Range():
 		#also use await maybe
 	else:
 		generator.extendedChunkGen(toLoadChunks,noise,tilemap)
+		saver.saveChunks(toLoadChunks)
 		await generator.extended_ChunkGen_Finished
 	
-	#filters all keys that are in the dictionary but not in the array and replacem them with it
+	#filters all keys that are in the dictionary but not in the array and replace them with it
 	toUnloadChunks = chunk_Data.Loaded_Chunks.keys().filter(
 		func(key):
 			return not toUnloadChunks.has(key)
 	)
-	
 	if toUnloadChunks.size() != 0:
 		loader.unload_Chunks(toUnloadChunks,tilemap)
-	#print("to unload chunks:",toUnloadChunks)
-	#print("loaded chunks:",chunk_Data.Loaded_Chunks.keys())
+	#print("to unload chunks 2:",toUnloadChunks)
+	#print("loaded chunks 2:",chunk_Data.Loaded_Chunks.keys())
 
 func load_save_orgeneratechunks(action):
 	#checks if it needs to get saved,loaded or newly generated

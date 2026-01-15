@@ -1,19 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvybtt5p5uen3"]
+[gd_scene load_steps=13 format=3 uid="uid://dvybtt5p5uen3"]
 
-[ext_resource type="Texture2D" uid="uid://c0f1vw2lqn6nx" path="res://player/playerassets/player-down1sprite.png" id="1_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://bmwt8il6amloq" path="res://player/playerassets/tmpAni1.png" id="1_8t03j"]
 [ext_resource type="Script" uid="uid://bnmqcjw4yj8oh" path="res://player/scripte/statemachine.gd" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://hjb2xf5073mj" path="res://player/playerassets/tmpAni2.png" id="2_2ieo8"]
+[ext_resource type="Texture2D" uid="uid://qkkc1tgw05ts" path="res://player/playerassets/tmpAni3.png" id="3_ebec5"]
 [ext_resource type="Script" uid="uid://fp6hplcxtcp7" path="res://player/scripte/walkstate.gd" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://bg43776ma7fbe" path="res://player/playerassets/tmpAni4.png" id="4_yllr7"]
 [ext_resource type="Script" uid="uid://cndshqaw0h8yo" path="res://player/scripte/idleState.gd" id="4_yw30f"]
+[ext_resource type="Texture2D" uid="uid://cptpiec8g0qxr" path="res://player/playerassets/tmpAni5.png" id="5_kb6p2"]
 [ext_resource type="Script" uid="uid://ck3ll5ajbnl21" path="res://player/buildstate.gd" id="5_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://cn3b4yc8qw1ug" path="res://player/playerassets/tmpAni6.png" id="6_wodsf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32hag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8t03j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2ieo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ebec5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yllr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kb6p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wodsf")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
 radius = 9.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2.296)
-texture = ExtResource("1_g1dw6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_32hag")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.68747723
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 

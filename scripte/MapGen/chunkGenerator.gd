@@ -93,6 +93,7 @@ func extendedChunkGen(toGenChunks, noise,tilemap):
 			tilemap.set_cell(pos, sourceId, dirtAtlas)
 		for pos in grassCords:
 			tilemap.set_cell(pos, sourceId, grassAtlas)
+		
 		dic_Key = Vector2i(tmpVectorCords.x,tmpVectorCords.y)
 		chunk_Data.Loaded_Chunks[dic_Key] = tempdic
 	call_deferred("emit_Finished_Signal")

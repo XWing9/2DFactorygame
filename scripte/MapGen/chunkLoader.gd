@@ -12,16 +12,15 @@ func load_newChunks():
 func unload_Chunks(toUnloadChunks,tilemap):
 	var startingX
 	var startingY
-	var chunk_Size = 16
+	var chunk_Size = 32
 	var offset : int = int(-0.5 * chunk_Size)
 	var tmpArray: Array[Vector2i] = []
 
 	for chunk_coords in toUnloadChunks:
 		tmpArray.clear()
-		
+
 		startingX = chunk_Size * int(chunk_coords.x)
 		startingY = chunk_Size * int(chunk_coords.y)
-
 		# calculate all tile positions for this chunk
 		for chunk_X in range(chunk_Size):
 			for chunk_Y in range(chunk_Size):
@@ -33,11 +32,12 @@ func unload_Chunks(toUnloadChunks,tilemap):
 
 		# batch erase all tiles for this chunk
 		for pos in tmpArray:
-			tilemap.erase_cell(pos)
+			tilemap.erase_cell(pos) 
+		chunk_Data.Loaded_Chunks.erase(chunk_coords)
+
 	#call_deferred("emit_Finished_Signal")
 	#make loop that checks if chunks need to be saved
 	#when yes save when not dont save
-	#use goddots erase.cell() function for it
 
 func check_If_Chunk_is_Saved() -> bool:
 	return false
