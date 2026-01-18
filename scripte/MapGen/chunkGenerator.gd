@@ -26,6 +26,8 @@ var startingX : int
 var tileXPos : int
 var tileYPos : int 
 
+
+var ironOretest : Vector2i = Vector2i(12,15)
 #dictionary template for temporary saving chunks
 var tempChunkData : Dictionary = {
 	"tilepos": []
@@ -56,8 +58,10 @@ func generateChunks(noise,tilemap):
 					tileYPos = chunk_origin_y + y
 					noise_val = noise.get_noise_2d(tileXPos, tileYPos)
 
-					if noise_val >= 0.0:
+					if noise_val >= 0.5:
 						tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, dirtAtlas)
+					elif noise_val >= 0.0 and noise_val < 0.5:
+						tilemap.set_cell(Vector2i(tileXPos, tileYPos),sourceId, ironOretest)
 					else:
 						tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, grassAtlas)
 					tempdic["tilepos"].append(Vector2i(tileXPos,tileYPos))
