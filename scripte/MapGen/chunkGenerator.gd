@@ -33,6 +33,21 @@ var tempChunkData : Dictionary = {
 	"tilepos": []
 }
 
+var genRuleBookDic : Dictionary = {
+	"GrassLands" : {
+		"Grass": Vector2i(2,1),
+		"Dirt": Vector2i (7,1),
+		"IronOre": Vector2i(12,15)
+	},
+	"Forest" : {
+		"ForestGrass" : Vector2i(2,3)
+	}
+}
+
+var biome := "GrassLands" # later: get_biome_from_noise(chunk_Cords_X, chunk_Cords_Y)
+var biome_tiles : Dictionary = genRuleBookDic[biome]
+var tmpAtlasCords : Vector2i
+
 var grassAtlas : Vector2i
 var dirtAtlas : Vector2i
 var sourceId : int
@@ -59,11 +74,13 @@ func generateChunks(noise,tilemap):
 					noise_val = noise.get_noise_2d(tileXPos, tileYPos)
 
 					if noise_val >= 0.5:
-						tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, dirtAtlas)
-					elif noise_val >= 0.0 and noise_val < 0.5:
-						tilemap.set_cell(Vector2i(tileXPos, tileYPos),sourceId, ironOretest)
+						tmpAtlasCords = biome_tiles["IronOre"]
+					elif noise_val >= 0.0:
+						tmpAtlasCords = biome_tiles["Dirt"]
 					else:
-						tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, grassAtlas)
+						tmpAtlasCords = biome_tiles["Grass"]
+						
+					tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, tmpAtlasCords)
 					tempdic["tilepos"].append(Vector2i(tileXPos,tileYPos))
 			
 			dic_Key = Vector2i(chunk_Cords_X,chunk_Cords_Y)
@@ -107,5 +124,9 @@ func emit_Finished_Signal():
 
 func dupdic() -> Dictionary:
 	return {"tilepos": []}.duplicate(true)
+
+func determineTile():
+	#use function to send noise and biom to to determine tile
+	pass
 #make a rulebook for what tile is for what noise
 #consider multithreading
