@@ -13,7 +13,7 @@ var saver : chunk_Saver
 var chunk_Entered : bool
 
 @onready var tilemap = $"."
-@onready var assets = $"../assets"
+@onready var assets = $"../LoadedRessources"
 @onready var player = $"../player"
 
 var sourceid = 0
@@ -97,6 +97,7 @@ func load_save_orgeneratechunks(action):
 		print("load chunks")
 	elif (action == "generatenew"):
 		generator.generateChunks(noise,tilemap)
+		assets.spawnAssets()
 		#saver.saveChunks(arrayOfChunks)
 	else:
 		print("status is incorrect")

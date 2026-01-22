@@ -15,7 +15,7 @@ General:
 Game:
 
 	Features:
-		-stop game when in pausescreen
+		-stop game when in pausescreen finish it
 		
 		-generall game saving
 		
@@ -39,11 +39,11 @@ Game:
 	World generation:
 		-give every tile more info or so when i check if i can place a building it just gets info and so
 		
-		-consider changing angle a bit(not pure topdown)
+		-consider changing angle a bit(not pure topdown) -no
 		
 		-consider being able to build over several layers upward(tied to trains)
 		
-		-make biomes and map larger
+		-implement biomes
 		
 		-Precdual generation
 			make own art for grounds and define better tiles for cleaner look
@@ -61,9 +61,6 @@ Game:
 	Perforance:
 		-try making a general class/file/script where some global always needed variables are being put into the main calcs to have every time?
 			
-		-introduce chunks
-			figure out how i can divide my game into chunks
-			
 		-Figure out how to handle machines etc
 		
 		-Make game go over ticks?
@@ -71,9 +68,10 @@ Game:
 
 consider controlling all input through autoload
 
-todo:
-	continuesly procedual generation
-	adding the option for seeds when starting new game + names for saves etc
-	loading and saving of chunks/ worlds etc
-	add ore generation/ biomes
+todo-todo list:
+	fix pause screen
 	make correct asset generation with boundary boxes
+		-give player ability to emit signal when i hit a object
+	add ore generation/ biomes
+	loading and saving of chunks/ worlds etc
+	adding the option for seeds when starting new game + names for saves etc

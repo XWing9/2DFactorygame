@@ -130,7 +130,6 @@ func dupdic() -> Dictionary:
 	return {"tilepos": []}.duplicate(true)
 
 func determineTile(noise, listOfTiles):
-	print(noise)
 	#i have no ide what im doing here?
 	
 	var t = clamp((noise + 1.0) * 0.5, 0.0, 0.999)
