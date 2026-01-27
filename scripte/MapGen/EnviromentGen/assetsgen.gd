@@ -24,12 +24,15 @@ func spawnAssets():
 	dictionaryKeys = chunk_Data.toSpawnAssets.keys()
 	avaibleRessourceListe = ruleBook.ressourceRuleBookDic[chunk_Data.currentBiome]
 	print(avaibleRessourceListe)
+	
 	for i in range(dictionaryKeys.size()):
+		
 		dicKey = dictionaryKeys[i]
 		dicKeyEntry = chunk_Data.toSpawnAssets[dicKey]
 		ressourceVector = dicKeyEntry["ground"]
 		print(ressourceVector)
 		rulebookRessource = avaibleRessourceListe[ressourceVector]
+		
 		if avaibleRessourceListe.has(ressourceVector):
 			if rulebookRessource == "Dirt":
 				toAddSzene = stone_Szene.instantiate()
