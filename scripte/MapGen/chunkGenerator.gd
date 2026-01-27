@@ -4,6 +4,8 @@ class_name chunk_Generator
 #vars used for both
 var tempdic
 var noise_val
+var ressourceSpawn : bool = false
+var ressourceCounter : int = 5
 
 #vars for first gen
 var startingchunks : int = 3
@@ -33,19 +35,6 @@ var tempChunkData : Dictionary = {
 	"tilepos": []
 }
 
-var genRuleBookDic : Dictionary = {
-	"GrassLands" : [
-		Vector2i(12,15), #Iron
-		Vector2i (7,1), #Dirt
-		Vector2i(2,1), #Grass
-		Vector2i(2,1) #Grass
-	], #change rest
-	"Forest" : [
-		Vector2i(2,3), #ForestGrass
-		Vector2i(4,5), #whatever
-	]
-}
-
 var biome : String
 var biome_tiles : Array
 var tmpAtlasCords : Vector2i
@@ -70,7 +59,7 @@ func generateChunks(noise,tilemap):
 			chunk_Cords_Y = chunk_y - (startingchunks >> 1)
 			
 			biome = determineBiome(chunk_Cords_X,chunk_Cords_Y)
-			biome_tiles = genRuleBookDic[biome]
+			biome_tiles = ruleBook.genRuleBookDic[biome]
 			
 			#loop to generate chunk tiles
 			for x in range(chunk_Size):
@@ -82,6 +71,17 @@ func generateChunks(noise,tilemap):
 					tmpAtlasCords = determineTile(noise_val,biome_tiles)
 					
 					tilemap.set_cell(Vector2i(tileXPos, tileYPos), sourceId, tmpAtlasCords)
+					if randf() < 0.05:
+						ressourceCounter += 1
+						if ressourceCounter >= 5:
+							ressourceSpawn = true
+							ressourceCounter = 0
+							chunk_Data.toSpawnAssets[Vector2i(tileXPos,tileYPos)] ={
+								"biome" : biome,
+								"ground" : tmpAtlasCords,
+							}
+							#print(chunk_Data.toSpawnAssets)
+					
 					tempdic["tilepos"].append(Vector2i(tileXPos,tileYPos))
 			
 			dic_Key = Vector2i(chunk_Cords_X,chunk_Cords_Y)
@@ -100,7 +100,7 @@ func extendedChunkGen(toGenChunks, noise,tilemap):
 		
 		#determine biome
 		biome = determineBiome(startingX,startingY)
-		biome_tiles = genRuleBookDic[biome]
+		biome_tiles = ruleBook.genRuleBookDic[biome]
 		
 		#loop to generate chunk tiles
 		for chunk_X in range(chunk_Size):
@@ -143,6 +143,7 @@ func determineBiome(x: int, y: int):
 #consider multithreading
 
 #next gen steps:
+#add asset gen to continues gen
 #Separate biome noise from terrain noise
 #Ore clusters using a second noise
 #Biome blending at chunk borders

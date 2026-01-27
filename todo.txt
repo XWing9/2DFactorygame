@@ -69,6 +69,7 @@ Game:
 consider controlling all input through autoload
 
 todo-todo list:
+	make player animation correct
 	fix pause screen
 	make correct asset generation with boundary boxes
 		-give player ability to emit signal when i hit a object

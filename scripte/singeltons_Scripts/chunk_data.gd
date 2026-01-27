@@ -8,5 +8,14 @@ var chunks_loaded : int = 0
 var current_Chunk : Vector2i
 var chunk_Size : int = 32
 
+var currentBiome : String = "GrassLands" #let it change dynamiclly in future
+
 var Loaded_Chunks : Dictionary = {
+}
+
+#asset gen stuff
+var toSpawnAssets : Dictionary = {
+}
+
+var loaded_Assets : Dictionary = {
 }

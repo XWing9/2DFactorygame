@@ -1,28 +1,49 @@
 extends Node
 
 @export var loadedAssets : Array = []
-@export var noiseMap : NoiseTexture2D
 
 @onready var szene := $"."
-var noiseVal
+
 #tmp var with szenes, change to list or so
-@onready var stone = "res://szenen/ressourceTypeSzene/GrassLands/Stone.tscn"
-var busch : Node2D
+@export var stone_Szene: PackedScene
+var stone
+@export var bush_Szene : PackedScene
+var bush
 
-signal finishedNoise
-
-var noiseValArray : Array = []
+var dictionaryKeys : Array
+var avaibleRessourceListe : Dictionary
+var ressourcePos : Vector2i
+var ressourceVector
+var toAddSzene : Node2D
+var dicKey
+var dicKeyEntry
+var rulebookRessource
 
 func spawnAssets():
-	print("assets entered")
-	for x in range(200):
-		noiseVal = noiseMap.get_noise_2d(x,x)
-		shouldAssetSpawn()
-		await finishedNoise
-		for i in range(noiseValArray.size()):
-			szene.add_child(stone)
+	#change this bunch of code to smth good
+	dictionaryKeys = chunk_Data.toSpawnAssets.keys()
+	avaibleRessourceListe = ruleBook.ressourceRuleBookDic[chunk_Data.currentBiome]
+	print(avaibleRessourceListe)
+	for i in range(dictionaryKeys.size()):
+		dicKey = dictionaryKeys[i]
+		dicKeyEntry = chunk_Data.toSpawnAssets[dicKey]
+		ressourceVector = dicKeyEntry["ground"]
+		print(ressourceVector)
+		rulebookRessource = avaibleRessourceListe[ressourceVector]
+		if avaibleRessourceListe.has(ressourceVector):
+			if rulebookRessource == "Dirt":
+				toAddSzene = stone_Szene.instantiate()
+			elif rulebookRessource == "Grass":
+				toAddSzene = bush_Szene.instantiate()
+		
+		ressourcePos = dictionaryKeys[i]
+		ressourcePos = Vector2i(
+			ressourcePos.x * 16,
+			ressourcePos.y * 16
+		)
+		toAddSzene.position = ressourcePos
+		szene.add_child(toAddSzene)
+	chunk_Data.toSpawnAssets.clear()
 
 func shouldAssetSpawn():
-	if noiseVal > 0.6:
-		noiseValArray.append(noiseVal)
-		finishedNoise.emit()
+	pass

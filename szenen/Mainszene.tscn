@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdi0j3ir14vl2"]
+[gd_scene format=3 uid="uid://bdi0j3ir14vl2"]
 
 [ext_resource type="Texture2D" uid="uid://dq3gku18m5j0h" path="res://assets/tiles.png" id="1_u17ww"]
 [ext_resource type="Script" uid="uid://d3i7lvo04kysw" path="res://scripte/MapGen/chunk_Manger.gd" id="3_a4e6k"]
 [ext_resource type="PackedScene" uid="uid://dvybtt5p5uen3" path="res://player/player.tscn" id="3_tvkfu"]
+[ext_resource type="PackedScene" uid="uid://cdggxu8no5wfy" path="res://szenen/ressourceTypeSzene/GrassLands/Stone.tscn" id="4_6hnbx"]
 [ext_resource type="Script" uid="uid://bd2246sj0v308" path="res://scripte/MapGen/EnviromentGen/assetsgen.gd" id="4_a4e6k"]
 [ext_resource type="PackedScene" uid="uid://dg2t0jaq755n8" path="res://UI/BuildMenu/game_ui.tscn" id="4_u17ww"]
+[ext_resource type="PackedScene" uid="uid://dd0u0mb6hdux6" path="res://szenen/ressourceTypeSzene/GrassLands/Bush.tscn" id="5_m7ukb"]
 [ext_resource type="Script" uid="uid://b0vxpimymbqgj" path="res://UI/BuildMenu/script/placementManager.gd" id="5_tvkfu"]
 [ext_resource type="Script" uid="uid://cuqvid5g2m44v" path="res://UI/BuildMenu/script/drawsmth.gd" id="8_a4e6k"]
 [ext_resource type="PackedScene" uid="uid://dbo3abpux525" path="res://UI/gameGUI/pause_screen.tscn" id="9_6hnbx"]
@@ -575,32 +577,35 @@ terrain_set_1/terrain_0/color = Color(0.199414, 0.325374, 0.808064, 1)
 sources/0 = SubResource("TileSetAtlasSource_5ivyi")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6hnbx"]
+fractal_octaves = 4
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m7ukb"]
 noise = SubResource("FastNoiseLite_6hnbx")
 
-[node name="Mainszene" type="Node2D"]
+[node name="Mainszene" type="Node2D" unique_id=5887642]
 
-[node name="Grass" type="TileMapLayer" parent="."]
+[node name="Grass" type="TileMapLayer" parent="." unique_id=724884330]
 tile_set = SubResource("TileSet_dxykf")
 script = ExtResource("3_a4e6k")
 noise_height_Texture = SubResource("NoiseTexture2D_m7ukb")
 
-[node name="LoadedRessources" type="Node" parent="."]
+[node name="LoadedRessources" type="Node" parent="." unique_id=1242830422]
 script = ExtResource("4_a4e6k")
+stone_Szene = ExtResource("4_6hnbx")
+bush_Szene = ExtResource("5_m7ukb")
 
-[node name="Buildings" type="Node" parent="." node_paths=PackedStringArray("building_manager", "tileMapLayer")]
+[node name="Buildings" type="Node" parent="." unique_id=924447770 node_paths=PackedStringArray("building_manager", "tileMapLayer")]
 script = ExtResource("5_tvkfu")
 building_manager = NodePath(".")
 tileMapLayer = NodePath("../Grass")
 
-[node name="player" parent="." instance=ExtResource("3_tvkfu")]
+[node name="player" parent="." unique_id=1094195942 instance=ExtResource("3_tvkfu")]
 
-[node name="GameUI" parent="." instance=ExtResource("4_u17ww")]
+[node name="GameUI" parent="." unique_id=1615085342 instance=ExtResource("4_u17ww")]
 
-[node name="grid" type="Node2D" parent="."]
+[node name="grid" type="Node2D" parent="." unique_id=1264224994]
 scale = Vector2(1.0000001, 1)
 script = ExtResource("8_a4e6k")
 
-[node name="Pause_Screen" parent="." instance=ExtResource("9_6hnbx")]
+[node name="Pause_Screen" parent="." unique_id=1276820187 instance=ExtResource("9_6hnbx")]
 visible = false
