@@ -73,7 +73,6 @@ func calc_Player_Range():
 	#checks if chunks need to be loaded or gnerated
 	if loader.check_If_Chunk_is_Saved():
 		loader.load_newChunks()
-		#also use await maybe
 	else:
 		generator.extendedChunkGen(toLoadChunks,noise,tilemap)
 		assets.spawnAssets()
@@ -87,6 +86,7 @@ func calc_Player_Range():
 	)
 	if toUnloadChunks.size() != 0:
 		loader.unload_Chunks(toUnloadChunks,tilemap)
+		loader.unload_Ressources(toUnloadChunks,assets)
 	#print("to unload chunks 2:",toUnloadChunks)
 	#print("loaded chunks 2:",chunk_Data.Loaded_Chunks.keys())
 

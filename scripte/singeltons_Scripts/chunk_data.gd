@@ -18,4 +18,9 @@ var toSpawnAssets : Dictionary = {
 }
 
 var loaded_Assets : Dictionary = {
+	#Vector2i(0,0) : { #postion of ressource
+		#"biome" : "GrassLands",
+		#"type" : "stone",
+		#"chunk" : Vector2i(0,0),
+	#}
 }
