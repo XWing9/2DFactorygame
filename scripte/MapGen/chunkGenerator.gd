@@ -115,6 +115,17 @@ func extendedChunkGen(toGenChunks, noise,tilemap):
 				tmp_Tile_Pos_Array.append(tmp_Tile_Pos)
 				
 				tempdic["tilepos"].append(Vector2i(tileXPos,tileYPos))
+				
+				if randf() < 0.05:
+						ressourceCounter += 1
+						if ressourceCounter >= 5:
+							ressourceSpawn = true
+							ressourceCounter = 0
+							chunk_Data.toSpawnAssets[Vector2i(tileXPos,tileYPos)] ={
+								"biome" : biome,
+								"ground" : tmpAtlasCords,
+							}
+				#add chance here?
 		#batch set tiles
 		for i in range(tmp_Tile_Pos_Array.size()):
 			tilemap.set_cell(tmp_Tile_Pos_Array[i], sourceId, tmpVectorCordsArray[i])

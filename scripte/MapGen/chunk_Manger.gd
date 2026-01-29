@@ -76,6 +76,7 @@ func calc_Player_Range():
 		#also use await maybe
 	else:
 		generator.extendedChunkGen(toLoadChunks,noise,tilemap)
+		assets.spawnAssets()
 		saver.saveChunks(toLoadChunks)
 		await generator.extended_ChunkGen_Finished
 	

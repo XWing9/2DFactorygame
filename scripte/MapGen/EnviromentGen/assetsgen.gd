@@ -30,7 +30,7 @@ func spawnAssets():
 		dicKey = dictionaryKeys[i]
 		dicKeyEntry = chunk_Data.toSpawnAssets[dicKey]
 		ressourceVector = dicKeyEntry["ground"]
-		print(ressourceVector)
+		#print(ressourceVector)
 		rulebookRessource = avaibleRessourceListe[ressourceVector]
 		
 		if avaibleRessourceListe.has(ressourceVector):
