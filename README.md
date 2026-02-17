@@ -1,5 +1,5 @@
-
-Generall Info:______________________
+Generall Info:
+______________________
 A 2D factory game written in GDScipt using the Goddot Engine.
 Maybe C++ will be used to write some systems when Performance get to low.
 
