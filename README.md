@@ -1,23 +1,95 @@
-Generall Info:
-______________________
-A 2D factory game written in GDScipt using the Goddot Engine.
-Maybe C++ will be used to write some systems when Performance get to low.
+# 🏭 Project Name (Working Title)
 
-Idea:
-___________________
-Its inspired by the mechanics and Gameplay of Factorio and Satisfactory.
-I aim it to be using the visual style from Factorio and the satisfiying gemeplay from Satisfactory.
-Combined with some own ideas of mine to not make it a clone.
+A 2D factory automation game built with the Godot Engine using GDScript.
 
-Clarification:
-________________________
-This project is a solely hobby Projekt, i dont plan on selling it.
-Its just for me to learn and have the fun of programming my own game.
+This is a personal hobby project focused on learning game architecture, procedural generation, optimization techniques, and automation system design.
 
-Development status:
-_______________________________
-Features that are under Development/Planned:
-  Further Optimization and improvement on Procedual Generation - under active Development
-  The real gameplay loop to be able to use Machines - under Development
-  Showing a grid when placing machines - Planned 
+---
+
+## 🎮 About The Game
+
+This project is inspired by the gameplay depth of Factorio and the satisfying production flow of Satisfactory, while aiming to introduce original mechanics and systems.
+
+The goal is to create a factory-building experience that is:
+
+- System-driven
+- Performance-conscious
+- Modular and scalable
+- Visually clean and readable
+
+This is **not a commercial project** — it exists purely for learning, experimentation, and fun.
+
+---
+
+## 🔁 Core Gameplay Loop (Planned)
+
+1. Explore a procedurally generated world  
+2. Extract raw resources  
+3. Process materials using machines  
+4. Automate production chains  
+5. Optimize logistics and expand the factory  
+
+The focus is on building increasingly complex and efficient systems.
+
+---
+
+## ⚙️ Tech Stack
+
+- **Engine:** Godot
+- **Language:** GDScript
+- **Future Optimization:** C++ for performance-critical systems (if required)
+
+---
+
+## 🚧 Development Status
+
+### Currently in Development
+- Procedural world generation (optimization & refinement)
+- Core gameplay loop systems
+- Machine interaction mechanics
+
+### Planned Features
+- Grid visualization for machine placement
+- Logistics systems (belts, routing, etc.)
+- Production balancing systems
+- Performance optimization improvements
+
+---
+
+## 🎯 Project Goals
+
+- Learn scalable game architecture
+- Improve procedural generation systems
+- Practice performance optimization
+- Design satisfying automation mechanics
+- Build a complete playable factory game from scratch
+
+---
+
+## 📌 Long-Term Vision
+
+Create a technically solid and satisfying factory builder that combines systemic depth with smooth production flow — without becoming a clone of existing titles.
+
+---
+
+## 🛠 Contributing
+
+This is currently a solo hobby project.  
+Contributions, suggestions, and discussions are welcome.
+
+---
+
+
+## 📷 Screenshots
+
+_(Add screenshots here once available)_
+
+---
+
+## 📚 Inspiration
+
+- Factorio
+- Satisfactory
+
+
   
