@@ -74,17 +74,8 @@ Create a technically solid and satisfying factory builder that combines systemic
 
 ## 🛠 Contributing
 
-This is currently a solo hobby project.  
-Contributions, suggestions, and discussions are welcome.
+This is a solo hobby project.  
 
----
-
-
-## 📷 Screenshots
-
-_(Add screenshots here once available)_
-
----
 
 ## 📚 Inspiration
 
